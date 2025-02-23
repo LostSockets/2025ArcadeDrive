@@ -8,9 +8,9 @@ package frc.robot.subsystems;
 //import com.ctre.phoenix.motorcontrol.InvertType;
 //import com.ctre.phoenix.motorcontrol.NeutralMode;
 //import com.ctre.phoenix.motorcontrol.can.TalonSRX;
-import com.revrobotics.CANSparkMax;
+import com.revrobotics.spark.SparkMax;
 import com.revrobotics.RelativeEncoder;
-import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+import com.revrobotics.spark.SparkLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -18,8 +18,8 @@ import frc.robot.Constants;
 
 public class ArmPivotSubsystem extends SubsystemBase {
 
-    private final CANSparkMax armPivotMotorLead = new CANSparkMax(Constants.ArmPivotConstants.kArmPivotMotorPort2, MotorType.kBrushless);
-    private final CANSparkMax armPivotMotorFollow = new CANSparkMax(Constants.ArmPivotConstants.kArmPivotMotorPort1, MotorType.kBrushed);
+    private final SparkMax armPivotMotorLead = new SparkMax(Constants.ArmPivotConstants.kArmPivotMotorPort2, MotorType.kBrushless);
+    private final SparkMax armPivotMotorFollow = new SparkMax(Constants.ArmPivotConstants.kArmPivotMotorPort1, MotorType.kBrushed);
     private final RelativeEncoder armPivotEncoder = armPivotMotorLead.getEncoder();
 
 
@@ -36,7 +36,7 @@ public class ArmPivotSubsystem extends SubsystemBase {
     }
 
     public void setMotor(double speed) {
-        armPivotMotorFollow.follow(armPivotMotorLead);
+        //armPivotMotorFollow.follow(armPivotMotorLead);
         SmartDashboard.putNumber("pivot speed", speed);
         armPivotMotorLead.set(speed);
     }

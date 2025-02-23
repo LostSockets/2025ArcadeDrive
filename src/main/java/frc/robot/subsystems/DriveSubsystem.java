@@ -1,9 +1,9 @@
 package frc.robot.subsystems;
 
 //import com.revrobotics.CANEncoder;
-import com.revrobotics.CANSparkMax;
+import com.revrobotics.spark.SparkMax;
 import com.revrobotics.RelativeEncoder;
-import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+import com.revrobotics.spark.SparkLowLevel.MotorType;
 
 //import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -15,10 +15,10 @@ import edu.wpi.first.cameraserver.CameraServer;
 public class DriveSubsystem extends SubsystemBase {
 
   // drivetrain motors
-  private final CANSparkMax driveTrainLM1 = new CANSparkMax(Constants.DriveConstants.kLeftMotor1Port, MotorType.kBrushless);
-  private final CANSparkMax driveTrainLM2 = new CANSparkMax(Constants.DriveConstants.kLeftMotor2Port, MotorType.kBrushless);
-  private final CANSparkMax driveTrainRM3 = new CANSparkMax(Constants.DriveConstants.kRightMotor1Port, MotorType.kBrushless);
-  private final CANSparkMax driveTrainRM4 = new CANSparkMax(Constants.DriveConstants.kRightMotor2Port, MotorType.kBrushless);
+  private final SparkMax driveTrainLM1 = new SparkMax(Constants.DriveConstants.kLeftMotor1Port, MotorType.kBrushless);
+  private final SparkMax driveTrainLM2 = new SparkMax(Constants.DriveConstants.kLeftMotor2Port, MotorType.kBrushless);
+  private final SparkMax driveTrainRM3 = new SparkMax(Constants.DriveConstants.kRightMotor1Port, MotorType.kBrushless);
+  private final SparkMax driveTrainRM4 = new SparkMax(Constants.DriveConstants.kRightMotor2Port, MotorType.kBrushless);
 
   private final RelativeEncoder driveLM1Encoder = driveTrainLM1.getEncoder();
   private final RelativeEncoder driveRM3Encoder = driveTrainRM3.getEncoder();
