@@ -62,6 +62,10 @@ public final class Constants {
 
   }
 
+  public static final class ElevatorConstants {
+    public static final int kElevatorMotorPort = 5;
+  }
+
   public static final class ArmPivotConstants {
 
     public static final int kArmPivotMotorPort1 = 5;
