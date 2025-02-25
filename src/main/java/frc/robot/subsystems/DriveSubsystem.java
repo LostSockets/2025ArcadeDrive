@@ -15,10 +15,10 @@ import edu.wpi.first.cameraserver.CameraServer;
 public class DriveSubsystem extends SubsystemBase {
 
   // drivetrain motors
-  private final SparkMax driveTrainLM1 = new SparkMax(Constants.DriveConstants.kLeftMotor1Port, MotorType.kBrushless);
-  private final SparkMax driveTrainLM2 = new SparkMax(Constants.DriveConstants.kLeftMotor2Port, MotorType.kBrushless);
-  private final SparkMax driveTrainRM3 = new SparkMax(Constants.DriveConstants.kRightMotor1Port, MotorType.kBrushless);
-  private final SparkMax driveTrainRM4 = new SparkMax(Constants.DriveConstants.kRightMotor2Port, MotorType.kBrushless);
+  private final SparkMax driveTrainLM1 = new SparkMax(Constants.DriveConstants.kLeftMotor1Port, MotorType.kBrushed);
+  private final SparkMax driveTrainLM2 = new SparkMax(Constants.DriveConstants.kLeftMotor2Port, MotorType.kBrushed);
+  private final SparkMax driveTrainRM3 = new SparkMax(Constants.DriveConstants.kRightMotor1Port, MotorType.kBrushed);
+  private final SparkMax driveTrainRM4 = new SparkMax(Constants.DriveConstants.kRightMotor2Port, MotorType.kBrushed);
 
   private final RelativeEncoder driveLM1Encoder = driveTrainLM1.getEncoder();
   private final RelativeEncoder driveRM3Encoder = driveTrainRM3.getEncoder();
@@ -64,7 +64,7 @@ public class DriveSubsystem extends SubsystemBase {
 
   public void setMotors(double leftSpeed, double rightSpeed) {
     driveTrainLM1.set(-leftSpeed);
-    driveTrainLM2.set(-leftSpeed);
+    driveTrainLM2.set(leftSpeed);
     driveTrainRM3.set(rightSpeed);
     driveTrainRM4.set(rightSpeed);
   }
