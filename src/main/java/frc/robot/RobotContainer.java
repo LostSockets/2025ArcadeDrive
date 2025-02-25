@@ -43,27 +43,27 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final DriveSubsystem driveSubsystem = new DriveSubsystem();
   //private final ArmTelescopicSubsystem armTelescopicSubsystem = new ArmTelescopicSubsystem();
-  private final ArmPivotSubsystem armPivotSubsystem = new ArmPivotSubsystem();
+  //private final ArmPivotSubsystem armPivotSubsystem = new ArmPivotSubsystem();
 
   private final Joystick joyDrive = new Joystick(Constants.OIConstants.kDriverJoystickPort);
-  private final Joystick joyArm = new Joystick(Constants.OIConstants.kArmJoystickPort);
+  //private final Joystick joyArm = new Joystick(Constants.OIConstants.kArmJoystickPort);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
 
     //Default commands
-    driveSubsystem.setDefaultCommand(new ArcadeDriveCmd(driveSubsystem, () -> -joyDrive.getRawAxis(Constants.OIConstants.kArcadeDriveSpeedAxis), () -> joyDrive.getRawAxis(Constants.OIConstants.kArcadeDriveTurnAxis)));
+    driveSubsystem.setDefaultCommand(new ArcadeDriveCmd(driveSubsystem, () -> -joyDrive.getRawAxis(Constants.OIConstants.kArcadeDriveSpeedAxis), () -> -joyDrive.getRawAxis(Constants.OIConstants.kArcadeDriveTurnAxis)));
     configureBindings();
     //armPivotSubsystem.setDefaultCommand(new ArmPivotCmd(armPivotSubsystem, () -> -joyArm.getRawAxis(Constants.OIConstants.kArmPivotAxis)));
     //armPivotSubsystem.setDefaultCommand(new ArmPivotCmd(armPivotSubsystem, 0));
   }
 
   private void configureBindings() {
-    new JoystickButton(joyArm, Constants.OIConstants.kArmPivotPIDPos0Button).onTrue(new ArmPivotButtonPIDCmd(armPivotSubsystem, Constants.ArmPivotConstants.kArmPivotPos0));
-    new JoystickButton(joyArm, Constants.OIConstants.kArmPivotPIDPos1Button).onTrue(new ArmPivotButtonPIDCmd(armPivotSubsystem, Constants.ArmPivotConstants.kArmPivotPos1));
-    new JoystickButton(joyArm, Constants.OIConstants.kArmPivotPIDPos2Button).onTrue(new ArmPivotButtonPIDCmd(armPivotSubsystem, Constants.ArmPivotConstants.kArmPivotPos2));
-    new JoystickButton(joyArm, Constants.OIConstants.kArmPivotPIDPos3Button).onTrue(new ArmPivotButtonPIDCmd(armPivotSubsystem, Constants.ArmPivotConstants.kArmPivotPos3));
-    armPivotSubsystem.setDefaultCommand(new ArmPivotJoyCmd(armPivotSubsystem, () -> -joyArm.getRawAxis(Constants.OIConstants.kArmPivotAxis)));
+    //new JoystickButton(joyArm, Constants.OIConstants.kArmPivotPIDPos0Button).onTrue(new ArmPivotButtonPIDCmd(armPivotSubsystem, Constants.ArmPivotConstants.kArmPivotPos0));
+    //new JoystickButton(joyArm, Constants.OIConstants.kArmPivotPIDPos1Button).onTrue(new ArmPivotButtonPIDCmd(armPivotSubsystem, Constants.ArmPivotConstants.kArmPivotPos1));
+    //new JoystickButton(joyArm, Constants.OIConstants.kArmPivotPIDPos2Button).onTrue(new ArmPivotButtonPIDCmd(armPivotSubsystem, Constants.ArmPivotConstants.kArmPivotPos2));
+    //new JoystickButton(joyArm, Constants.OIConstants.kArmPivotPIDPos3Button).onTrue(new ArmPivotButtonPIDCmd(armPivotSubsystem, Constants.ArmPivotConstants.kArmPivotPos3));
+    //armPivotSubsystem.setDefaultCommand(new ArmPivotJoyCmd(armPivotSubsystem, () -> -joyArm.getRawAxis(Constants.OIConstants.kArmPivotAxis)));
     //new JoystickButton(joyArm, Constants.OIConstants.kArmPivotDown).whileTrue(new ArmPivotButtonCmd(armPivotSubsystem, Constants.ArmPivotConstants.kArmPivotSpeedPercentageThrottled));
     //new JoystickButton(joyArm, Constants.OIConstants.kArmPivotUp).whileTrue(new ArmPivotButtonCmd(armPivotSubsystem, -1*Constants.ArmPivotConstants.kArmPivotSpeedPercentageThrottled));
     new JoystickButton(joyDrive, Constants.OIConstants.kArcadeDriveHoldInPlace).whileTrue((new ArcadeDrivePIDHoldInPlaceCmd(driveSubsystem)));
@@ -103,7 +103,7 @@ public class RobotContainer {
     /* Autonomous 3: starting arm position resting on back */
     return new SequentialCommandGroup(
       new AutoDriveFwdCmd(driveSubsystem, Constants.AutoConstants.kAutoDriveFwdDistance),
-      new AutoPivot(armPivotSubsystem, Constants.AutoConstants.kAutoPivotHeight2),
+      //new AutoPivot(armPivotSubsystem, Constants.AutoConstants.kAutoPivotHeight2),
       new AutoDriveBkwdCmd(driveSubsystem, Constants.AutoConstants.kAutoDriveBkwdDistance)
       
 
